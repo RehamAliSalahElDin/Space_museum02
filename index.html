@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="space">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Forgotten Explorers — Digital Space Museum (Moon &amp; Mars Archival Exhibits)</title>
+  <meta name="description" content="Discover the forgotten machines that explored other worlds, the missions they served, and the scientific discoveries they left behind across the Moon and Mars." />
+
+  <!-- Google Fonts with local system fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Cosmic Starfield & Destination-Adaptive Horizon Layer -->
+  <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+  <div class="planetary-atmosphere-layer" aria-hidden="true">
+    <div class="planetary-horizon-arc"></div>
+  </div>
+  <div id="warp-transition-overlay" class="warp-transition-overlay" aria-hidden="true"></div>
+
+  <!-- Persistent Museum Telemetry Header & Navigation -->
+  <header class="museum-header" role="banner">
+    <div class="museum-header-inner">
+      <a href="#entrance" class="brand-cluster" data-nav-view="entrance" aria-label="Return to Museum Entrance">
+        <div class="brand-emblem" aria-hidden="true">
+          <span class="brand-emblem-dot"></span>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-kicker">Digital Space Museum • Archival Hardware Registry</span>
+          <span class="brand-title">The Forgotten Explorers</span>
+        </div>
+      </a>
+
+      <nav class="museum-nav-controls" aria-label="Museum Primary Navigation">
+        <button type="button" class="nav-pill is-active" data-nav-view="entrance">
+          <span>01. Entrance</span>
+        </button>
+        <button type="button" class="nav-pill" data-nav-view="destinations">
+          <span>02. Destinations</span>
+        </button>
+        <button type="button" class="nav-pill" data-nav-view="collection-moon" data-dest-pill="moon">
+          <span class="nav-pill-dot"></span>
+          <span>03. Moon Wing (4)</span>
+        </button>
+        <button type="button" class="nav-pill" data-nav-view="collection-mars" data-dest-pill="mars">
+          <span class="nav-pill-dot"></span>
+          <span>04. Mars Wing (5)</span>
+        </button>
+        <button type="button" class="nav-pill" data-nav-view="atlas" data-dest-pill="atlas">
+          <span class="nav-pill-dot"></span>
+          <span>05. Planetary Atlas</span>
+        </button>
+        <div id="environment-readout" class="environment-readout" aria-live="polite">
+          <span>SECTOR: DEEP SPACE ATRIUM</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Museum View Stage -->
+  <main class="museum-main" id="museum-main">
+
+    <!-- ====================================================================
+         PAGE 1 — LANDING PAGE (MUSEUM ENTRANCE)
+         ==================================================================== -->
+    <section id="view-entrance" class="museum-view is-visible" aria-labelledby="entrance-headline">
+      <div class="entrance-stage">
+        <div class="orbital-astrolabe" aria-hidden="true"></div>
+
+        <div class="entrance-portal-card">
+          <div class="entrance-coordinates">
+            <span>ARCHIVE • NASA PLANETARY HARDWARE REGISTRY</span>
+            <span>•</span>
+            <span>DESTINATIONS: LUNA (4 EXHIBITS) &amp; MARS (5 EXHIBITS)</span>
+            <span>•</span>
+            <span>INTERACTIVE 3D &amp; PLANETARY ATLAS</span>
+          </div>
+
+          <p class="entrance-museum-label">The Forgotten Explorers</p>
+          <h1 id="entrance-headline" class="entrance-headline">They Left Earth, Their Legacy Stayed.</h1>
+          <p class="entrance-subtitle">Some explorers never came home.</p>
+          <p class="entrance-description">
+            Discover the forgotten machines that explored other worlds, the missions they served, and the scientific discoveries they left behind.
+          </p>
+
+          <div class="entrance-cta-row">
+            <button type="button" class="btn-museum-primary" data-nav-view="destinations">
+              <span>Enter the Museum</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" class="btn-museum-secondary" data-nav-view="collection-moon">
+              <span>Explore Moon Wing (4 Exhibits)</span>
+            </button>
+            <button type="button" class="btn-museum-secondary" data-nav-view="collection-mars">
+              <span>Explore Mars Wing (5 Exhibits)</span>
+            </button>
+          </div>
+
+          <div class="entrance-pilot-preview" aria-label="Museum Collection Overview">
+            <div class="entrance-telemetry-item">
+              <span class="entrance-telemetry-label">Planetary Wings</span>
+              <span class="entrance-telemetry-value">Moon (4) &amp; Mars (5)</span>
+            </div>
+            <div class="entrance-telemetry-item">
+              <span class="entrance-telemetry-label">Interactive 3D Models</span>
+              <span class="entrance-telemetry-value">Official NASA GLB Viewers</span>
+            </div>
+            <div class="entrance-telemetry-item">
+              <span class="entrance-telemetry-label">Planetary Cartography</span>
+              <span class="entrance-telemetry-value">Moon &amp; Mars 3D/2D Atlas</span>
+            </div>
+            <div class="entrance-telemetry-item">
+              <span class="entrance-telemetry-label">Evidence Standard</span>
+              <span class="entrance-telemetry-value">Verified NASA Primary Sources</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 2 — DESTINATION SELECTION
+         ==================================================================== -->
+    <section id="view-destinations" class="museum-view" aria-labelledby="destinations-heading">
+      <div class="section-container">
+        <div class="destinations-header">
+          <div class="eyebrow-badge">
+            <span class="eyebrow-badge-pulse"></span>
+            <span>Planetary Navigation Concourse</span>
+          </div>
+          <h2 id="destinations-heading" class="destinations-title">Choose Your Destination</h2>
+          <p class="destinations-subtitle">
+            Select a planetary environment to adapt the museum's atmospheric telemetry and inspect the human-made machines left behind on its surface.
+          </p>
+        </div>
+
+        <div id="destinations-grid-mount" class="destinations-grid">
+          <!-- Populated dynamically by js/app.js from MUSEUM_DATA.destinations -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 3A — MOON COLLECTION WING (4 VERIFIED EXHIBITS + MOON ATLAS ENTRY)
+         ==================================================================== -->
+    <section id="view-collection-moon" class="museum-view" aria-labelledby="moon-wing-heading">
+      <div class="section-container" id="moon-collection-mount">
+        <!-- Populated dynamically by js/app.js from MUSEUM_DATA.collections.moon -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 3B — MARS COLLECTION WING (5 VERIFIED EXHIBITS + MARS ATLAS ENTRY)
+         ==================================================================== -->
+    <section id="view-collection-mars" class="museum-view" aria-labelledby="mars-wing-heading">
+      <div class="section-container" id="mars-collection-mount">
+        <!-- Populated dynamically by js/app.js from MUSEUM_DATA.collections.mars -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 4A — APOLLO 15 LRV DETAIL / MUSEUM EXHIBIT (lrv_apollo15)
+         ==================================================================== -->
+    <section id="view-exhibit-lrv_apollo15" class="museum-view" aria-labelledby="lrv-exhibit-title">
+      <!-- Sticky Exhibit Section Jump Navigation -->
+      <nav class="exhibit-subnav" aria-label="Apollo 15 LRV Exhibit Sections">
+        <div class="exhibit-subnav-inner">
+          <button type="button" class="subnav-link" data-nav-view="collection-moon">← Moon Collection</button>
+          <a href="#sec-identity" class="subnav-link is-active" data-scroll-target="sec-identity">01. Meet the Explorer</a>
+          <a href="#sec-timeline" class="subnav-link" data-scroll-target="sec-timeline">02. Mission Timeline</a>
+          <a href="#sec-science" class="subnav-link" data-scroll-target="sec-science">03. Scientific Discoveries</a>
+          <a href="#sec-challenges" class="subnav-link" data-scroll-target="sec-challenges">04. Challenges &amp; Adaptation</a>
+          <a href="#sec-engineering" class="subnav-link" data-scroll-target="sec-engineering">05. Engineering &amp; Blueprints</a>
+          <a href="#sec-final-chapter" class="subnav-link" data-scroll-target="sec-final-chapter">06. Final Chapter &amp; Legacy</a>
+          <a href="#sec-sources" class="subnav-link" data-scroll-target="sec-sources">07. Sources &amp; Visual Register</a>
+          <button type="button" class="subnav-link" data-open-atlas="moon" data-atlas-focus="loc_lrv_apollo15" data-return-exhibit="lrv_apollo15">🌐 Locate on Moon Atlas</button>
+        </div>
+      </nav>
+
+      <!-- Dynamic Exhibit Content Mount -->
+      <div id="lrv-exhibit-mount">
+        <!-- Populated by js/app.js from MUSEUM_DATA.pilotExhibit -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 4B — DYNAMIC ARTIFACT EXHIBIT VIEW (ALL 8 NEW EXHIBITS)
+         ==================================================================== -->
+    <section id="view-exhibit-dynamic" class="museum-view" aria-label="Museum Artifact Exhibit">
+      <div id="dynamic-exhibit-mount">
+        <!-- Populated by js/app.js from EXHIBITS_DATA[artifactId] -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 5 — INTERACTIVE PLANETARY ATLAS (MOON ATLAS & MARS ATLAS)
+         ==================================================================== -->
+    <section id="view-atlas" class="museum-view" aria-label="Interactive Planetary Atlas">
+      <div class="section-container" id="atlas-view-mount">
+        <!-- Populated by js/atlas.js from ATLAS_DATA -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Full-Resolution Archival Image & Blueprint Lightbox -->
+  <div id="archival-lightbox" class="archival-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-dialog">
+      <div class="lightbox-header">
+        <div>
+          <span id="lightbox-badge" class="media-type-badge">Historical Photograph</span>
+          <strong id="lightbox-title" style="margin-left: 0.65rem; font-family: var(--font-heading);"></strong>
+        </div>
+        <button type="button" id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close archival viewer">
+          Close Viewer (Esc)
+        </button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lightbox-image" src="" alt="" />
+      </div>
+      <div class="lightbox-footer">
+        <p id="lightbox-caption"></p>
+        <div class="figcaption-meta">
+          <span id="lightbox-credit"></span>
+          <a id="lightbox-source-link" href="#" target="_blank" rel="noopener noreferrer">Open Official NASA Source ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor 3D Engine & Museum Scripts -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/GLTFLoader.js"></script>
+  <script src="js/vendor/OrbitControls.js"></script>
+  <script src="data/mer-traverses.js"></script>
+  <script src="data/museum-data.js"></script>
+  <script src="data/exhibits-data.js"></script>
+  <script src="data/atlas-data.js"></script>
+  <script src="js/viewer3d.js"></script>
+  <script src="js/atlas.js"></script>
+  <script src="js/exhibits-renderer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
